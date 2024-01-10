@@ -31,6 +31,7 @@ class CityViewController: UIViewController {
         
         filterControl.addTarget(self, action: #selector(filterControlValueChanged), for: .valueChanged)
     }
+    
     // MARK: - Configure Methods
     
     @objc
