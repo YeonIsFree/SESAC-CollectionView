@@ -5,4 +5,16 @@
 //  Created by Seryun Chun on 2024/01/11.
 //
 
-import Foundation
+import UIKit
+
+protocol Identiable {
+    static var identifier: String { get }
+}
+
+extension Identiable {
+    static var identifier: String {
+        return String(describing: Self.self)
+    }
+}
+
+extension UIView: Identiable {}

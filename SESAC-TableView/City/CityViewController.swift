@@ -9,60 +9,51 @@ import UIKit
 
 class CityViewController: UIViewController {
     
+    var cityList: [City] = CityInfo().city
+    
+    // MARK: - UI Properties
+    
     @IBOutlet var cityCollectionView: UICollectionView!
     @IBOutlet var filterControl: UISegmentedControl!
-
-    var cityList: [City] = CityInfo().city
+    
+    // MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cityCollectionView.dataSource = self
         cityCollectionView.delegate = self
-
-        let xib = UINib(nibName: "CityCollectionViewCell", bundle: nil)
-        cityCollectionView.register(xib, forCellWithReuseIdentifier: "CityCollectionViewCell")
+        
+        let xib = UINib(nibName: CityCollectionViewCell.nibName, bundle: nil)
+        cityCollectionView.register(xib, forCellWithReuseIdentifier: CityCollectionViewCell.identifier)
         
         configurationFlowLayout()
         
         filterControl.addTarget(self, action: #selector(filterControlValueChanged), for: .valueChanged)
     }
+    // MARK: - Configure Methods
     
     @objc
     func filterControlValueChanged(_ sender: UISegmentedControl) {
-        let idx = sender.selectedSegmentIndex
-        let rawData: [City] = CityInfo().city
-        var tempCityList: [City] = []
-        var targetType: Bool = false
+        let index = sender.selectedSegmentIndex
+        let rawData = CityInfo().city
         
-        switch idx {
-        case 0:                // 모두
-            tempCityList = rawData
+        switch index {
+        case 0:                                               // 모두
+            cityList = rawData
         case 1:
-            targetType = true  // 국내
+            cityList = rawData.filter { $0.domestic_travel }  // 국내
         case 2:
-            targetType = false // 해외
+            cityList = rawData.filter { !$0.domestic_travel } // 해외
         default:
             break
         }
         
-        for city in rawData {
-            // "모두" 일 경우 해당 for 문을 실행하지 않고 통과
-            if idx == 0 { break }
-            
-            // 배열에서 targetType과 같은 애들만 임시 배열로 옮겨준다.
-            if city.domestic_travel == targetType {
-                tempCityList.append(city)
-            }
-        }
-        
-        // 이 함수에서 만든 임시 배열을 클래스 전체에서 쓰는 cityList로 복사
-        cityList = tempCityList
-        
-        // 화면을 업데이트
         cityCollectionView.reloadData()
     }
-
+    
+    // MARK: - Layout Methods
+    
     func configurationFlowLayout() {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 20
@@ -78,18 +69,4 @@ class CityViewController: UIViewController {
     }
 }
 
-extension CityViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cityList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = cityCollectionView.dequeueReusableCell(withReuseIdentifier: "CityCollectionViewCell", for: indexPath) as! CityCollectionViewCell
-        
-        let city = cityList[indexPath.item]
-        cell.configureCell(data: city)
-        
-        return cell
-    }
-}
+

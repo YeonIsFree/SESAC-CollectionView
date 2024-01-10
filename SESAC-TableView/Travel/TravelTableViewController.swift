@@ -8,21 +8,30 @@
 import UIKit
 import Kingfisher
 
-class TravelTableViewController: UITableViewController {
+class TravelTableViewController: UIViewController {
     
     let magazineList: [Magazine] = MagazineInfo().magazine
-
+    
+    // MARK: - Life Cycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+// MARK: - UITableViewDelegate
+
+extension TravelTableViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return magazineList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelTableViewCell", for: indexPath) as! TravelTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else {
+            return UITableViewCell()
+        }
         
         cell.mainImageView.layer.cornerRadius = 20
         
