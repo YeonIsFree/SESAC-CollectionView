@@ -17,4 +17,4 @@ extension Identiable {
     }
 }
 
-extension UIView: Identiable {}
+extension NSObject: Identiable {}

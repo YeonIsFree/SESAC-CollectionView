@@ -8,13 +8,13 @@
 import UIKit
 
 protocol Nibable {
-    static var nibName: String { get }  // 채택 하고 구현해!
+    static var nibName: String { get }
 }
 
 extension Nibable {
     static var nibName: String {
-        return String(describing: Self.self)    // 채택만 해!  (자동으로) 구현
+        return String(describing: Self.self)
     }
 }
 
-extension UIView: Nibable {}
+extension NSObject: Nibable {}

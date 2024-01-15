@@ -10,14 +10,13 @@ import Kingfisher
 
 class TravelTableViewController: UIViewController {
     
-    let magazineList: [Magazine] = MagazineInfo().magazine
+    let magazineList: [Magazine] = MagazineInfo.magazine
     
     // MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -33,36 +32,17 @@ extension TravelTableViewController: UITableViewDelegate, UITableViewDataSource 
             return UITableViewCell()
         }
         
-        cell.mainImageView.layer.cornerRadius = 20
-        
-        let magazine: Magazine = magazineList[indexPath.row]
-        
-        // imageView
-        let url = URL(string: magazine.photo_image)!
-        cell.mainImageView.kf.setImage(with: url)
-        
-        // title
-        cell.titleLabel.text = magazine.title
-        
-        // subtitle
-        cell.subtitleLabel.text = magazine.subtitle
-        
-        // dateLabel - dateformatter
-        cell.dateLabel.text = DateFormatter.convertedDate(magazine.date)
+        cell.configureTravelTableViewCell(magazineList[indexPath.row])
         
         return cell
     }
-}
-
-extension DateFormatter {
-    static func convertedDate(_ raw: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyMMdd"
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(identifier: TravelDetailViewController.identifier) as? TravelDetailViewController else { return }
         
-        let convertedDate = dateFormatter.date(from: raw)
+        vc.urlString = magazineList[indexPath.row].link
         
-        dateFormatter.dateFormat = "yy년 MM월 dd일"
-        
-        return dateFormatter.string(from: convertedDate!)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
+

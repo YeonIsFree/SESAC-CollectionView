@@ -8,16 +8,18 @@
 import UIKit
 
 class ADTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    @IBOutlet var ADLabel: UILabel!
+    @IBOutlet var ADMainLabel: UILabel!
+    
+    func configureADCell(_ data: Travel) {
+        ADLabel.font = .systemFont(ofSize: 12, weight: .bold)
+        ADLabel.clipsToBounds = true
+        ADLabel.layer.cornerRadius = 5
+        ADLabel.backgroundColor = .white
+        
+        ADMainLabel.text = data.title
+        ADMainLabel.textColor = .white
+        ADMainLabel.font = .systemFont(ofSize: 18, weight: .bold)
+    }
 }
