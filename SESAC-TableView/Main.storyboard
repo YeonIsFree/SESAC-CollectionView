@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5hs-Um-vxz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HHx-Zn-IlR">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -484,7 +484,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kS-S9-ply" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="592" y="1393"/>
+            <point key="canvasLocation" x="592" y="714"/>
         </scene>
         <!--Travel Detail View Controller-->
         <scene sceneID="1Xp-PB-246">
@@ -518,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8Z-s3-jor" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1349" y="1393"/>
+            <point key="canvasLocation" x="1349" y="714"/>
         </scene>
         <!--인기 도시-->
         <scene sceneID="WLk-Z0-Sv2">
@@ -528,8 +528,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xxF-C7-ByT">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HHx-Zn-IlR" id="ZU4-bm-WlL"/>
+                                </connections>
+                            </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MWf-J8-3Q7">
-                                <rect key="frame" x="20" y="123" width="353" height="31"/>
+                                <rect key="frame" x="20" y="169" width="353" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BGY-S3-8og"/>
                                 </constraints>
@@ -540,7 +547,7 @@
                                 </segments>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zk6-zT-frW">
-                                <rect key="frame" x="0.0" y="173" width="393" height="679"/>
+                                <rect key="frame" x="0.0" y="209" width="393" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sdK-IU-Tzg">
                                     <size key="itemSize" width="128" height="128"/>
@@ -564,11 +571,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Zk6-zT-frW" firstAttribute="trailing" secondItem="RfY-7j-891" secondAttribute="trailing" id="4WQ-3p-sOO"/>
-                            <constraint firstItem="MWf-J8-3Q7" firstAttribute="top" secondItem="RfY-7j-891" secondAttribute="top" constant="20" id="HyY-i8-VC1"/>
+                            <constraint firstItem="xxF-C7-ByT" firstAttribute="leading" secondItem="RfY-7j-891" secondAttribute="leading" id="L73-4S-3J4"/>
+                            <constraint firstItem="xxF-C7-ByT" firstAttribute="trailing" secondItem="RfY-7j-891" secondAttribute="trailing" id="UAK-Cm-7rm"/>
                             <constraint firstItem="MWf-J8-3Q7" firstAttribute="leading" secondItem="RfY-7j-891" secondAttribute="leading" constant="20" id="Vk2-8p-19i"/>
                             <constraint firstItem="Zk6-zT-frW" firstAttribute="leading" secondItem="RfY-7j-891" secondAttribute="leading" id="gAI-V6-vIJ"/>
                             <constraint firstItem="RfY-7j-891" firstAttribute="trailing" secondItem="MWf-J8-3Q7" secondAttribute="trailing" constant="20" id="gXS-Io-EjW"/>
-                            <constraint firstItem="Zk6-zT-frW" firstAttribute="top" secondItem="MWf-J8-3Q7" secondAttribute="bottom" constant="20" id="r04-Tk-Arw"/>
+                            <constraint firstItem="MWf-J8-3Q7" firstAttribute="top" secondItem="xxF-C7-ByT" secondAttribute="bottom" constant="10" id="hNI-2y-kpB"/>
+                            <constraint firstItem="Zk6-zT-frW" firstAttribute="top" secondItem="MWf-J8-3Q7" secondAttribute="bottom" constant="10" id="r04-Tk-Arw"/>
+                            <constraint firstItem="xxF-C7-ByT" firstAttribute="top" secondItem="RfY-7j-891" secondAttribute="top" id="s7f-4m-NN8"/>
                             <constraint firstAttribute="bottom" secondItem="Zk6-zT-frW" secondAttribute="bottom" id="xVa-3A-VjI"/>
                         </constraints>
                     </view>
@@ -576,11 +586,12 @@
                     <connections>
                         <outlet property="cityCollectionView" destination="Zk6-zT-frW" id="7Bp-Ja-WVZ"/>
                         <outlet property="filterControl" destination="MWf-J8-3Q7" id="8II-qo-VGx"/>
+                        <outlet property="searchBar" destination="xxF-C7-ByT" id="dFJ-Bv-2u5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Boi-qw-eF9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="592" y="654"/>
+            <point key="canvasLocation" x="592" y="1481"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z9p-1n-iiR">
@@ -598,7 +609,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsi-gV-rlg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-182" y="654"/>
+            <point key="canvasLocation" x="-182" y="1480"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Udf-8i-2zd">
@@ -616,7 +627,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ia0-LM-jpi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-182.44274809160305" y="1392.9577464788733"/>
+            <point key="canvasLocation" x="-182" y="714"/>
         </scene>
     </scenes>
     <resources>

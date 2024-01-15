@@ -18,7 +18,7 @@ class CityCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Configure Methods
     
-    func configureCell(data: City) {
+    func configureCell(_ data: City) {
         // imageView Setting
         guard let url = URL(string: data.city_image) else { return }
         cityImageView.kf.setImage(with: url)

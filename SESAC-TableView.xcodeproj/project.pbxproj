@@ -23,6 +23,7 @@
 		8C5C08382B5515F700A5AE53 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5C08372B5515F700A5AE53 /* NumberFormatter.swift */; };
 		8C5C083A2B55161100A5AE53 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5C08392B55161100A5AE53 /* DateFormatter.swift */; };
 		8C5C083C2B5516DC00A5AE53 /* TravelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5C083B2B5516DC00A5AE53 /* TravelDetailViewController.swift */; };
+		8C5C08422B551CEA00A5AE53 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5C08412B551CEA00A5AE53 /* City.swift */; };
 		8C9D3AF52B484FC600A16877 /* CaseThreeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9D3AF42B484FC600A16877 /* CaseThreeTableViewController.swift */; };
 		8C9D3AF72B48500E00A16877 /* CaseThreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9D3AF62B48500E00A16877 /* CaseThreeTableViewCell.swift */; };
 		8CD60E292B4C03D0002E9871 /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD60E282B4C03D0002E9871 /* MagazineInfo.swift */; };
@@ -59,6 +60,7 @@
 		8C5C08372B5515F700A5AE53 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		8C5C08392B55161100A5AE53 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		8C5C083B2B5516DC00A5AE53 /* TravelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailViewController.swift; sourceTree = "<group>"; };
+		8C5C08412B551CEA00A5AE53 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		8C9D3AF42B484FC600A16877 /* CaseThreeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseThreeTableViewController.swift; sourceTree = "<group>"; };
 		8C9D3AF62B48500E00A16877 /* CaseThreeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseThreeTableViewCell.swift; sourceTree = "<group>"; };
 		8CD60E282B4C03D0002E9871 /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		8C55A3392B4D342800F23D7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8C5C08412B551CEA00A5AE53 /* City.swift */,
 				8C55A3372B4D342100F23D7C /* CityInfo.swift */,
 				8CEC0FFE2B4FD9F4004AE318 /* TravelModel.swift */,
 			);
@@ -157,21 +160,53 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		8CF3F3472B4D966300A7BC6B /* City */ = {
+		8C5C083D2B551A5000A5AE53 /* CityCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				8C55A3392B4D342800F23D7C /* Model */,
+				8C5C08402B551B0200A5AE53 /* Cell */,
 				8C55A33B2B4D351400F23D7C /* CityViewController.swift */,
-				8C55A33D2B4D35E300F23D7C /* CityCollectionViewCell.swift */,
-				8C55A33E2B4D35E300F23D7C /* CityCollectionViewCell.xib */,
+			);
+			path = CityCollectionView;
+			sourceTree = "<group>";
+		};
+		8C5C083E2B551A9600A5AE53 /* CityTableView */ = {
+			isa = PBXGroup;
+			children = (
+				8C5C083F2B551AE200A5AE53 /* Cell */,
+				8CEC10082B5036E0004AE318 /* DetailViewController.swift */,
+				8CEC100A2B503D00004AE318 /* AdViewController.swift */,
 				8CEC0FFA2B4FD5E1004AE318 /* CityTableViewController.swift */,
 				8CEC0FFC2B4FD6A3004AE318 /* CityTableView.storyboard */,
+			);
+			path = CityTableView;
+			sourceTree = "<group>";
+		};
+		8C5C083F2B551AE200A5AE53 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
 				8CEC10042B5029E2004AE318 /* ADTableViewCell.swift */,
 				8CEC10052B5029E2004AE318 /* ADTableViewCell.xib */,
 				8CEC10002B4FDABA004AE318 /* CityTableViewCell.swift */,
 				8CEC10012B4FDABA004AE318 /* CityTableViewCell.xib */,
-				8CEC10082B5036E0004AE318 /* DetailViewController.swift */,
-				8CEC100A2B503D00004AE318 /* AdViewController.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8C5C08402B551B0200A5AE53 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8C55A33D2B4D35E300F23D7C /* CityCollectionViewCell.swift */,
+				8C55A33E2B4D35E300F23D7C /* CityCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8CF3F3472B4D966300A7BC6B /* City */ = {
+			isa = PBXGroup;
+			children = (
+				8C55A3392B4D342800F23D7C /* Model */,
+				8C5C083D2B551A5000A5AE53 /* CityCollectionView */,
+				8C5C083E2B551A9600A5AE53 /* CityTableView */,
 			);
 			path = City;
 			sourceTree = "<group>";
@@ -308,6 +343,7 @@
 				8CD60E2D2B4C0486002E9871 /* TravelTableViewCell.swift in Sources */,
 				8C5C083C2B5516DC00A5AE53 /* TravelDetailViewController.swift in Sources */,
 				8C23CE772B4821B20026151A /* CaseTwoTableViewController.swift in Sources */,
+				8C5C08422B551CEA00A5AE53 /* City.swift in Sources */,
 				8CEC10022B4FDABA004AE318 /* CityTableViewCell.swift in Sources */,
 				8C1B73AE2B4EF780006916E8 /* Nibable+.swift in Sources */,
 				8CEC0FFB2B4FD5E1004AE318 /* CityTableViewController.swift in Sources */,
